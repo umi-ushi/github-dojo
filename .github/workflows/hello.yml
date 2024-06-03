@@ -8,6 +8,13 @@ on:
         default: Hello
         required: true
         description: A cheerful word
+      log-level:
+        type: choice
+        description: choice parameter sample
+        options:
+          - info
+          - warn
+          - error
 
 jobs:
   hello:
