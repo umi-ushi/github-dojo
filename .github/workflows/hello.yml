@@ -13,5 +13,5 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "{{ inputs.greeting }}, World"
+      - run: echo "${{ inputs.greeting }}, World"
       - uses: actions/checkout@v4
