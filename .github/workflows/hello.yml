@@ -26,12 +26,13 @@ jobs:
       - uses: actions/checkout@v4
   built-in-function:
     runs-on: ubuntu-latest
+    # https://docs.github.com/ja/actions/learn-github-actions/expressions
     env:
       FUNC_CONTAIN: ${{ contains('Hello Actions', 'Action') }}
       FUNC_STARTS_WITH: ${{ startsWith('Hello Actions', 'He') }}
       FUNC_ENDS_WITH: ${{ endsWith('Hello Actions', 'ons') }}
       FUNC_FORMAT: ${{ format('Hello {0} {1}', 'Actions', '!') }}
-      FUNC_JOIN: ${{ join(['Hello', 'Actions'], ',') }}
+      FUNC_JOIN: ${{ join(github.event.issue.labels.*.name, ', ') }}
       FUNC_TO_JSON: ${{ toJSON(github) }}
     steps:
       - run: printenv | grep 'FUNC_'
