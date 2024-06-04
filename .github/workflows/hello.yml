@@ -28,8 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FUNC_CONTAIN: ${{ contains('Hello Actions', 'Action') }}
-      FUNC_START_WITH: ${{ startWith('Hello Actions', 'He') }}
-      FUNC_END_WITH: ${{ endWith('Hello Actions', 'ons') }}
+      FUNC_STARTS_WITH: ${{ startsWith('Hello Actions', 'He') }}
+      FUNC_ENDS_WITH: ${{ endsWith('Hello Actions', 'ons') }}
       FUNC_FORMAT: ${{ format('Hello {0} {1}', 'Actions', '!') }}
       FUNC_JOIN: ${{ join(['Hello', 'Actions'], ',') }}
       FUNC_TO_JSON: ${{ toJSON(github) }}
