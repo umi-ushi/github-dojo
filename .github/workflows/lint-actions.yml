@@ -1,0 +1,24 @@
+name: Lint of Actions workflow
+run-name: Lint of Actions workflow(Run by @${{ github.actor }})
+
+on:
+  push:
+    paths: ['.github/workflows/*.yml', '.github/workflows/*.yaml']
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@4
+      # https://github.com/rhysd/actionlint/blob/main/docs/usage.md#docker
+      - run: |
+          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:latest
