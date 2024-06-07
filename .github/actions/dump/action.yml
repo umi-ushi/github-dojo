@@ -15,17 +15,16 @@ outputs:
     value: ${{ steps.current.outputs.date }}
     description: |
       ダンプ日時
-defaults:
-  run:
-    shell: bash
-
 runs:
   using: composite
   steps:
     - run: printenv | sort
+      shell: bash
     - run: echo "${CONTEXT}"
+      shell: bash
       if: ${{ inputs.enable-context == 'true' }}
       env:
         CONTEXT: ${{ toJSON(github) }}
     - id: current
       run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"
+      shell: bash
