@@ -26,7 +26,7 @@ jobs:
 
       - name: Convert repository owner to lowercase
         id: convert-lowercase-owner
-        run: echo "LOWERCASE_REPOSITORY_OWNER=$(echo ${GITHUB_REPOSITORY_OWNER,,})" >> "${GITHUB_OUTPUT}"
+        run: echo "LOWERCASE_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "${GITHUB_OUTPUT}"
         shell: bash
 
       - uses: docker/metadata-action@v5
